@@ -52,6 +52,7 @@ os.environ['AUX_ANNOTATOR_CKPTS_PATH'] = os.environ.get(
         'AUX_ANNOTATOR_CKPTS_PATH',
         '/workspace/ComfyUI/models/comfyui_controlnet_aux/ckpts'
     )
+print("AUX_ANNOTATOR_CKPTS_PATH", os.environ['AUX_ANNOTATOR_CKPTS_PATH'])
 os.environ['AUX_TEMP_DIR'] = os.getenv('AUX_TEMP_DIR', str(TEMP_DIR))
 os.environ['AUX_USE_SYMLINKS'] = os.getenv('AUX_USE_SYMLINKS', str(USE_SYMLINKS))
 os.environ['AUX_ORT_PROVIDERS'] = os.getenv('AUX_ORT_PROVIDERS', str(",".join(ORT_PROVIDERS)))
