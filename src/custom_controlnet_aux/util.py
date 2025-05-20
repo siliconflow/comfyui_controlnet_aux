@@ -40,10 +40,7 @@ print("annotator_ckpts_path:", annotator_ckpts_path)
 USE_SYMLINKS = False
 
 try:
-    annotator_ckpts_path = os.environ.get(
-        'AUX_ANNOTATOR_CKPTS_PATH',
-        '/workspace/ComfyUI/models/comfyui_controlnet_aux/ckpts'
-    )
+    annotator_ckpts_path = os.environ['AUX_ANNOTATOR_CKPTS_PATH']
 except:
     warnings.warn("Custom pressesor model path not set successfully.")
     pass

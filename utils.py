@@ -10,6 +10,7 @@ import subprocess
 import threading
 import comfy
 import tempfile
+import folder_paths
 
 here = Path(__file__).parent.resolve()
 
@@ -18,7 +19,7 @@ config_path = Path(here, "config.yaml")
 if os.path.exists(config_path):
     config = yaml.load(open(config_path, "r"), Loader=yaml.FullLoader)
 
-    annotator_ckpts_path = str(Path(here, config["annotator_ckpts_path"]))
+    annotator_ckpts_path = os.path.join(folder_paths.models_dir, "comfyui_controlnet_aux", "ckpts")
     TEMP_DIR = config["custom_temp_path"]
     USE_SYMLINKS = config["USE_SYMLINKS"]
     ORT_PROVIDERS = config["EP_list"]
@@ -50,7 +51,7 @@ else:
 
 os.environ['AUX_ANNOTATOR_CKPTS_PATH'] = os.environ.get(
         'AUX_ANNOTATOR_CKPTS_PATH',
-        '/workspace/ComfyUI/models/comfyui_controlnet_aux/ckpts'
+        annotator_ckpts_path
     )
 print("AUX_ANNOTATOR_CKPTS_PATH", os.environ['AUX_ANNOTATOR_CKPTS_PATH'])
 os.environ['AUX_TEMP_DIR'] = os.getenv('AUX_TEMP_DIR', str(TEMP_DIR))
